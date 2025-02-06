@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Proposal</title>
+    <style>
+        body {
+            background-image: url('https://example.com/hello-kitty-background.jpg'); /* Add your Hello Kitty background image URL */
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #cat-gif {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .button-container {
+            position: absolute;
+            bottom: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #proposal-text {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            font-weight: bold;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div id="proposal-text">Will you be my gf?</div>
+    <img id="cat-gif" src="https://example.com/cat.gif" alt="Cat GIF"> <!-- Add your cat gif URL -->
+    <div class="button-container">
+        <button id="yes-button" class="button">Yes</button>
+        <button id="no-button" class="button">No</button>
+    </div>
+    <script>
+        const yesButton = document.getElementById('yes-button');
+        const noButton = document.getElementById('no-button');
+        const messages = ["Please", "Pookie", "Consider it?", "I love you"];
+        let messageIndex = 0;
+
+        noButton.addEventListener('click', () => {
+            if (messageIndex < messages.length) {
+                noButton.innerText = messages[messageIndex++];
+            } else {
+                noButton.style.fontSize = `${parseInt(noButton.style.fontSize) - 2}px`;
+            }
+        });
+
+        yesButton.addEventListener('click', () => {
+            yesButton.style.fontSize = `${parseInt(yesButton.style.fontSize) + 2}px`;
+            if (yesButton.style.fontSize === '200px') {
+                alert('Thank you!');
+                // Display a notification with success message
+                const notification = document.createElement('div');
+                notification.innerText = 'Success';
+                notification.style.position = 'fixed';
+                notification.style.top = '10px';
+                notification.style.right = '10px';
+                notification.style.padding = '10px';
+                notification.style.backgroundColor = 'green';
+                notification.style.color = 'white';
+                document.body.appendChild(notification);
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>
